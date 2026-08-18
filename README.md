@@ -24,6 +24,39 @@ Developed by:
 RegisterNumber:  
 */
 ```
+```
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.array(eval(input()))
+y = np.array(eval(input()))
+
+x_mean = np.mean(x)
+y_mean = np.mean(y)
+
+num = 0
+denom = 0
+for i in range(len(x)):
+    num += (x[i] - x_mean) * (y[i] - y_mean)
+    denom += (x[i] - x_mean) ** 2
+
+# Move slope calculation outside the loop
+m = num / denom
+b = y_mean - m * x_mean
+
+print("Slope (m):", m)
+print("Intercept (b):", b)
+
+y_predicted = m * x + b
+print("Predicted Y:", y_predicted)
+
+plt.scatter(x, y, color='red', label='Data Points')
+plt.plot(x, y_predicted, color='blue', label='Best Fit Line')
+plt.xlabel('X')
+plt.ylabel('Y')
+plt.legend()
+plt.show()
+```
 
 ## Output:
 ![best fit line](sam.png)
